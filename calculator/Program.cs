@@ -16,7 +16,7 @@
 //    }
 //}
 
-RationalNumber rn = new(5, -10);
+RationalNumber rn = new(5, 10);
 Console.WriteLine("{0}/{1}", rn.Numerator, rn.Denominator);
 
 RationalNumber r1 = new(18, 5);
