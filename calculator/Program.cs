@@ -16,11 +16,11 @@
 //    }
 //}
 
-RationalNumber rn = new(5, 10);
+RationalNumber rn = new(5, -10);
 Console.WriteLine("{0}/{1}", rn.Numerator, rn.Denominator);
 
-RationalNumber r1 = new(18, 5);
-RationalNumber r2 = new(11, 4);
+RationalNumber r1 = new(17, 9);
+RationalNumber r2 = new(11, 3);
 
 RationalNumber add = r1++;
 Console.WriteLine("{0}/{1}", add.Numerator, add.Denominator);
@@ -31,7 +31,7 @@ Console.WriteLine("{0}/{1}", mul.Numerator, mul.Denominator);
 RationalNumber div = r1 / r2;   
 Console.WriteLine("{0}/{1}", div.Numerator, div.Denominator);
 
-struct RationalNumber
+class RationalNumber
 {
     /// <summary>
     /// числитель
@@ -87,7 +87,12 @@ struct RationalNumber
     {
         if (term2 == 0)
             return term1;
-        else
+        if (term2 < 0)
+        {
+            term1 *= (-1);
+            term2 *= (-1);
+        }
+        
             return GetGCD(term2, term1 % term2);
     }
 
@@ -117,8 +122,16 @@ struct RationalNumber
 
     public static RationalNumber operator ++(RationalNumber r1)
     {
-        return new RationalNumber(r1.Numerator + r1.Denominator, r1.Denominator);
+        var numeratorLocal = r1.Numerator; 
+        var denominatorLocal = r1.Denominator;
+        var newNumerator = numeratorLocal + denominatorLocal;
+        Console.WriteLine($" * " + newNumerator + "/" + denominatorLocal);
+        return new RationalNumber(newNumerator, denominatorLocal);
+       
     }
+    //{
+    //    return new RationalNumber(r1.Numerator + r1.Denominator, r1.Denominator);
+    //}
 
     public static RationalNumber operator --(RationalNumber r1)
     {
