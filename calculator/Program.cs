@@ -31,7 +31,7 @@ Console.WriteLine("{0}/{1}", mul.Numerator, mul.Denominator);
 RationalNumber div = r1 / r2;   
 Console.WriteLine("{0}/{1}", div.Numerator, div.Denominator);
 
-class RationalNumber
+public struct RationalNumber
 {
     /// <summary>
     /// числитель
@@ -132,6 +132,27 @@ class RationalNumber
     {
         return new RationalNumber((r1.Numerator - r1.Denominator), r1.Denominator);
     }
+
+    public bool Equals(RationalNumber other)
+    {
+        return Numerator.Equals(other.Numerator)
+               && Denominator.Equals(other.Denominator);
+    }
+
+    public override bool Equals(object? obj)
+    {
+        if (obj is RationalNumber other_vector)
+            return Numerator == other_vector.Numerator && Denominator == other_vector.Denominator;
+
+        return false;
+    }
+
+    public override string ToString() => $"({Numerator};{Denominator})";
+
+    //public static RationalNumber bool operator ==(RationalNumber r1, RationalNumber r2)
+    //{
+    //    return r1.Equals(r2);
+    //}
 
 
 }
