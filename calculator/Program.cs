@@ -19,17 +19,22 @@
 RationalNumber rn = new(5, -10);
 Console.WriteLine("{0}/{1}", rn.Numerator, rn.Denominator);
 
-RationalNumber r1 = new(17, 9);
-RationalNumber r2 = new(11, 3);
-
-RationalNumber add = ++r1;
-Console.WriteLine("{0}/{1}", add.Numerator, add.Denominator);
-RationalNumber sub = -- r2;
-Console.WriteLine("{0}/{1}", sub.Numerator, sub.Denominator);
+RationalNumber r1 = new(4, 5);
+RationalNumber r2 = new(4, -7);
+var rNext1 = r1;
+var rNext2 = r2;
+RationalNumber add = ++rNext1;
+RationalNumber sub = --rNext2;
 RationalNumber mul = r1 * r2;
+RationalNumber div = r1 / r2;
+Console.WriteLine("{0}/{1}", add.Numerator, add.Denominator);
+Console.WriteLine("{0}/{1}", sub.Numerator, sub.Denominator);
 Console.WriteLine("{0}/{1}", mul.Numerator, mul.Denominator);
-RationalNumber div = r1 / r2;   
 Console.WriteLine("{0}/{1}", div.Numerator, div.Denominator);
+Console.WriteLine(add.ToString());
+Console.WriteLine(sub.ToString());
+Console.WriteLine(mul.ToString());
+Console.WriteLine(div.ToString());
 
 public struct RationalNumber
 {
@@ -124,9 +129,6 @@ public struct RationalNumber
     {
         return new RationalNumber(r1.Numerator + r1.Denominator, r1.Denominator);
     }
-    //{
-    //    return new RationalNumber(r1.Numerator + r1.Denominator, r1.Denominator);
-    //}
 
     public static RationalNumber operator --(RationalNumber r1)
     {
@@ -147,7 +149,7 @@ public struct RationalNumber
         return false;
     }
 
-    public override string ToString() => $"({Numerator};{Denominator})";
+    public override string ToString() => $"{Numerator}/{Denominator}";
 
     //public static RationalNumber bool operator ==(RationalNumber r1, RationalNumber r2)
     //{
