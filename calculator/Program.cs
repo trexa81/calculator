@@ -22,9 +22,9 @@ Console.WriteLine("{0}/{1}", rn.Numerator, rn.Denominator);
 RationalNumber r1 = new(17, 9);
 RationalNumber r2 = new(11, 3);
 
-RationalNumber add = r1++;
+RationalNumber add = ++r1;
 Console.WriteLine("{0}/{1}", add.Numerator, add.Denominator);
-RationalNumber sub = r1 - r2;
+RationalNumber sub = -- r2;
 Console.WriteLine("{0}/{1}", sub.Numerator, sub.Denominator);
 RationalNumber mul = r1 * r2;
 Console.WriteLine("{0}/{1}", mul.Numerator, mul.Denominator);
@@ -122,12 +122,7 @@ class RationalNumber
 
     public static RationalNumber operator ++(RationalNumber r1)
     {
-        var numeratorLocal = r1.Numerator; 
-        var denominatorLocal = r1.Denominator;
-        var newNumerator = numeratorLocal + denominatorLocal;
-        Console.WriteLine($" * " + newNumerator + "/" + denominatorLocal);
-        return new RationalNumber(newNumerator, denominatorLocal);
-       
+        return new RationalNumber(r1.Numerator + r1.Denominator, r1.Denominator);
     }
     //{
     //    return new RationalNumber(r1.Numerator + r1.Denominator, r1.Denominator);
