@@ -1,21 +1,4 @@
 ﻿
-//double squareMe = 5;                            
-//Console.WriteLine(Calculate.Square(squareMe));
-
-
-//class Calculate
-//{
-//    public static int Square(int number)
-//    {
-//        return number * number;
-//    }
-
-//    public static double Square(double number)
-//    {
-//        return number * number;
-//    }
-//}
-
 RationalNumber rn = new(5, -10);
 Console.WriteLine("{0}/{1}", rn.Numerator, rn.Denominator);
 
@@ -60,13 +43,13 @@ public struct RationalNumber
     //конструктор
     public RationalNumber(int numerator, int denominator)
     {
-        
+
         if (denominator == 0)
             throw new ArgumentException("Знаменатель не может быть равным 0.");
-        
+
         if (denominator < 0)
         {
-            numerator *= (- 1);
+            numerator *= (-1);
             denominator *= (-1);
         }
         _numerator = numerator;
@@ -97,8 +80,8 @@ public struct RationalNumber
             term1 *= (-1);
             term2 *= (-1);
         }
-        
-            return GetGCD(term2, term1 % term2);
+
+        return GetGCD(term2, term1 % term2);
     }
 
     //==, != (метод Equals()), <, >, <=, >=, +, –, ++, --
@@ -158,3 +141,4 @@ public struct RationalNumber
 
 
 }
+
