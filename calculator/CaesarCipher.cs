@@ -3,18 +3,14 @@
 public class CaesarCipher
 {
     /// <summary>
-    /// символы русской азбуки
+    /// алфавмт
     /// </summary>
-    const string alfabet = "АБВГДЕЁЖЗИЙКЛМНОПРСТУФХЦЧШЩЪЫЬЭЮЯабвгдеёжзийклмнопрстуфхцчшщъыьэюя";
+    const string fullAlfabet = "АБВГДЕЁЖЗИЙКЛМНОПРСТУФХЦЧШЩЪЫЬЭЮЯабвгдеёжзийклмнопрстуфхцчшщъыьэюя";
+    int letterQty = fullAlfabet.Length;     // Length:  Возвращает количество символов в текущей системе
 
-    private string CodeEncode(string text, int k)
+    private string CodeEncode(string text)
     {
-        
-        // алфавмт верхнего инижнего регистра
-        var fullAlfabet = alfabet + alfabet.ToLower(); // ToLower: Возвращает копию этой строки, преобразованную в нижний регистр абвгдеёжзийклмнопрстуфхцчшщъыьэюя
-        Console.WriteLine(fullAlfabet);
-        var letterQty = fullAlfabet.Length;     // Length:  Возвращает количество символов в текущей системе
-        var retVal = "";
+        string retVal = "";
         for (int i = 0; i < text.Length; i++)
         {
             var c = text[i];   // преобразует текст в массив чар
@@ -35,12 +31,12 @@ public class CaesarCipher
     }
 
     //шифрование текста
-    public string Encrypt(string plainMessage, int key)
-        => CodeEncode(plainMessage, key);
+    public string Encrypt(string plainMessage)
+        => CodeEncode(plainMessage);
 
     //дешифрование текста IСoder
-    public string Decrypt(string encryptedMessage, int key)
-        => CodeEncode(encryptedMessage, key);
+    public string Decrypt(string encryptedMessage)
+        => CodeEncode(encryptedMessage);
 }
 
 // Определить интерфейс IСoder, который полагает методы поддержки шифрования строк.
