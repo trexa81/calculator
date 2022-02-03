@@ -5,13 +5,14 @@ public class CaesarCipher
     /// <summary>
     /// символы русской азбуки
     /// </summary>
-    const string alfabet = "АБВГДЕЁЖЗИЙКЛМНОПРСТУФХЦЧШЩЪЫЬЭЮЯ";
+    const string alfabet = "АБВГДЕЁЖЗИЙКЛМНОПРСТУФХЦЧШЩЪЫЬЭЮЯабвгдеёжзийклмнопрстуфхцчшщъыьэюя";
 
     private string CodeEncode(string text, int k)
     {
         
         // алфавмт верхнего инижнего регистра
-        var fullAlfabet = alfabet + alfabet.ToLower(); // ToLower: Возвращает копию этой строки, преобразованную в нижний регистр
+        var fullAlfabet = alfabet + alfabet.ToLower(); // ToLower: Возвращает копию этой строки, преобразованную в нижний регистр абвгдеёжзийклмнопрстуфхцчшщъыьэюя
+        Console.WriteLine(fullAlfabet);
         var letterQty = fullAlfabet.Length;     // Length:  Возвращает количество символов в текущей системе
         var retVal = "";
         for (int i = 0; i < text.Length; i++)
@@ -25,7 +26,7 @@ public class CaesarCipher
             }
             else
             {
-                var codeIndex = (letterQty + index + k) % letterQty;
+                var codeIndex = (letterQty - index + 32) % letterQty;
                 retVal += fullAlfabet[codeIndex];
             }
         }
@@ -37,7 +38,17 @@ public class CaesarCipher
     public string Encrypt(string plainMessage, int key)
         => CodeEncode(plainMessage, key);
 
-    //дешифрование текста
+    //дешифрование текста IСoder
     public string Decrypt(string encryptedMessage, int key)
-        => CodeEncode(encryptedMessage, -key);
+        => CodeEncode(encryptedMessage, key);
 }
+
+// Определить интерфейс IСoder, который полагает методы поддержки шифрования строк.
+// В интерфейсе объявляются два метода Encode() и Decode(), используемые для шифрования и дешифрования строк.
+// Создать класс ACoder, реализующий интерфейс ICoder.
+// Класс шифрует строку посредством сдвига каждого символа на одну «алфавитную» позицию выше. (В результате такого сдвига буква А становится буквой Б).
+// Создать класс BCoder, реализующий интерфейс ICoder.
+// Класс шифрует строку, выполняя замену каждой буквы, стоящей в алфавите на i-й позиции, на букву того же регистра, расположенную в алфавите на i-й позиции с конца алфавита.
+// (Например, буква В заменяется на букву Э.
+// Написать программу, демонстрирующую функционирование классов).
+
