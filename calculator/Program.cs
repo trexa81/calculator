@@ -1,6 +1,6 @@
 ﻿
-using System.Text;
-using calculator;
+//using System.Text;
+//using calculator;
 
 
 var cipher = new CaesarCipher();
